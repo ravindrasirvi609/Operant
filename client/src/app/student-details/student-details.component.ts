@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-details',
@@ -12,9 +13,23 @@ export class StudentDetailsComponent implements OnInit {
     grade: '12th',
     address: '123 Main St, City'
   };
+  isMenuOpen: boolean = false;
+  isLoggedIn: boolean = false;
 
-  constructor() { }
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    this.isLoggedIn = !this.isLoggedIn;
+  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+  logout(): void {
+    // Perform logout logic here, such as clearing session data, etc.
+    sessionStorage.removeItem('accessToken');
+
+    // Redirect the user to the login page
+    this.router.navigate(['/login']);
+  }
+  
 }
