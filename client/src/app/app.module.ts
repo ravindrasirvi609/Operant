@@ -9,8 +9,19 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AwardsComponent } from './awards/awards.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { CalenderComponent } from './calender/calender.component';
+import { ReportsComponent } from './reports/reports.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NavComponent } from './nav/nav.component';
+import { MainComponent } from './main/main.component';
+import { ToastrService } from 'ngx-toastr';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaymentComponent } from './payment/payment.component';
+import { WindowRefService } from './window-ref.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +29,16 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     LoginComponent,
     StudentDetailsComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    DashboardComponent,
+    AwardsComponent,
+    ProjectsComponent,
+    CalenderComponent,
+    ReportsComponent,
+    UserProfileComponent,
+    NavComponent,
+    MainComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +46,17 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      toastComponent: ToastNoAnimation,
+      preventDuplicates: true,
+      closeButton: true,
+      timeOut: 3000,
+    }),
+    ToastNoAnimationModule,
+    
   ],
-  providers: [],
+  providers: [WindowRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
